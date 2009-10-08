@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: AWSECommerceClient
+Version: 0.1dev
+Summary: Client to the Amazon AWSECommerceService
+Home-page: http://tech.jonathangardner.net/Python/AWSECommerceService
+Author: Jonathan Gardner
+Author-email: jgardner@jonathangardner.net
+License: GPL
+Description: UNKNOWN
+Keywords: Amazon AWS ECommerce
+Platform: UNKNOWN
