@@ -37,6 +37,71 @@ class AWSECommerceClient(object):
 
         return Parser.parse_file(aws_conn._mexe(verb, qs, None, headers={}))
 
-    def itemSearch(self, **kwargs): 
+    def Help(self, **kwargs):
+        return self.method('Help', **kwargs)
+
+    def ItemSearch(self, **kwargs):
         return self.method('ItemSearch', **kwargs)
 
+    def ItemLookup(self, **kwargs):
+        return self.method('ItemLookup', **kwargs)
+
+    def BrowseNodeLookup(self, **kwargs):
+        return self.method('BrowseNodeLookup', **kwargs)
+
+    def ListSearch(self, **kwargs):
+        return self.method('ListSearch', **kwargs)
+
+    def ListLookup(self, **kwargs):
+        return self.method('ListLookup', **kwargs)
+
+    def CustomerContentSearch(self, **kwargs):
+        return self.method('CustomerContentSearch', **kwargs)
+
+    def CustomerContentLookup(self, **kwargs):
+        return self.method('CustomerContentLookup', **kwargs)
+
+    def SimilarityLookup(self, **kwargs):
+        return self.method('SimilarityLookup', **kwargs)
+
+    def SellerLookup(self, **kwargs):
+        return self.method('SellerLookup', **kwargs)
+
+    def CartGet(self, **kwargs):
+        return self.method('CartGet', **kwargs)
+
+    def CartAdd(self, **kwargs):
+        return self.method('CartAdd', **kwargs)
+
+    def CartCreate(self, **kwargs):
+        return self.method('CartCreate', **kwargs)
+
+    def CartModify(self, **kwargs):
+        return self.method('CartModify', **kwargs)
+
+    def CartClear(self, **kwargs):
+        return self.method('CartClear', **kwargs)
+
+    def TransactionLookup(self, **kwargs):
+        return self.method('TransactionLookup', **kwargs)
+
+    def SellerListingSearch(self, **kwargs):
+        return self.method('SellerListingSearch', **kwargs)
+
+    def SellerListingLookup(self, **kwargs):
+        return self.method('SellerListingLookup', **kwargs)
+
+    def TagLookup(self, **kwargs):
+        return self.method('TagLookup', **kwargs)
+
+    def VehicleSearch(self, **kwargs):
+        return self.method('VehicleSearch', **kwargs)
+
+    def VehiclePartSearch(self, **kwargs):
+        return self.method('VehiclePartSearch', **kwargs)
+
+    def VehiclePartLookup(self, **kwargs):
+        return self.method('VehiclePartLookup', **kwargs)
+
+    def MultiOperation(self, **kwargs):
+        return self.method('MultiOperation', **kwargs)

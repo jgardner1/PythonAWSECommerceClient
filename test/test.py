@@ -6,9 +6,9 @@ client = AWSECommerceClient(
     'onlyeee-20',
     'wx+WYK5aXWBJQmlut0886531i3THLP0CY2SRfxrX')
 
-print client.itemSearch(
-    SearchIndex='Electronics',
-    Manufacturer='Asus',
-    Keywords='Asus Eee PC',
-    Order='-price',
-    ResponseGroup='ItemAttributes,Images')
+response = client.ItemLookup(
+    ItemId='B000H6SXMY',
+    ResponseGroup='Reviews')
+
+from pprint import pprint
+pprint(response['Items'])
