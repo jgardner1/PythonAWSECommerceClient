@@ -3,12 +3,13 @@ from awsecommerceclient import AWSECommerceClient
 
 client = AWSECommerceClient(
     '1KHB4V2W5HGHCAHD2M82',
-    'onlyeee-20',
+    'deal-digger.com-20',
     'wx+WYK5aXWBJQmlut0886531i3THLP0CY2SRfxrX')
 
-response = client.ItemLookup(
+response = client.ItemSearch(
+    Keywords="potato",
     ItemId='B000H6SXMY',
-    ResponseGroup='Reviews')
+    SearchIndex='Blended')
 
 from pprint import pprint
 pprint(response)

@@ -35,7 +35,9 @@ class AWSECommerceClient(object):
         qs, signature = aws_conn.get_signature(kwargs, verb, path)
         qs = path + '?' + qs + '&Signature=' + urllib.quote(signature)
 
-        return Parser.parse_file(aws_conn._mexe(verb, qs, None, headers={}))
+        return Parser.parse_file(aws_conn._mexe(verb, qs, None, headers={
+                'User-Agent': 'AWSECommerceClient.py',
+            }))
 
     def Help(self, **kwargs):
         return self.method('Help', **kwargs)

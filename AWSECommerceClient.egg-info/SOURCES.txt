@@ -9,4 +9,5 @@ AWSECommerceClient.egg-info/top_level.txt
 awsecommerceclient/AWSECommerceClient.py
 awsecommerceclient/Parser.py
 awsecommerceclient/__init__.py
+test/test-ItemSearch.py
 test/test.py
