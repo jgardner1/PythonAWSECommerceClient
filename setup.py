@@ -20,6 +20,7 @@ setup(name='AWSECommerceClient',
       install_requires=[
           # -*- Extra requirements: -*-
           'boto',
+          'XMLSchemaParser',
       ],
       entry_points="""
       # -*- Entry points: -*-
