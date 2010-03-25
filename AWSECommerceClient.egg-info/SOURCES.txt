@@ -5,6 +5,7 @@ AWSECommerceClient.egg-info/SOURCES.txt
 AWSECommerceClient.egg-info/dependency_links.txt
 AWSECommerceClient.egg-info/entry_points.txt
 AWSECommerceClient.egg-info/not-zip-safe
+AWSECommerceClient.egg-info/requires.txt
 AWSECommerceClient.egg-info/top_level.txt
 awsecommerceclient/AWSECommerceClient.py
 awsecommerceclient/Parser.py
