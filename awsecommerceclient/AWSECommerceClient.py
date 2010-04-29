@@ -2,6 +2,10 @@ from boto.connection import AWSQueryConnection
 from Parser import Parser
 import time
 import urllib
+from cStringIO import StringIO
+
+import logging
+log = logging.getLogger("awsecommerceclient")
 
 class AWSECommerceClient(object):
 
@@ -35,9 +39,16 @@ class AWSECommerceClient(object):
         qs, signature = aws_conn.get_signature(kwargs, verb, path)
         qs = path + '?' + qs + '&Signature=' + urllib.quote(signature)
 
-        return Parser.parse_file(aws_conn._mexe(verb, qs, None, headers={
-                'User-Agent': 'AWSECommerceClient.py',
-            }))
+        xml_response = StringIO(aws_conn._mexe(verb, qs, None, headers={
+            'User-Agent': 'AWSECommerceClient.py',
+        }).read())
+
+        try:
+            return Parser.parse_file(xml_response)
+        except:
+            # Log the original response and the exception.
+            log.error("Error parsing response:\n"+xml_response.getvalue())
+            raise
 
     def Help(self, **kwargs):
         return self.method('Help', **kwargs)

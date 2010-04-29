@@ -5,20 +5,20 @@ from cStringIO import StringIO
 
 # The source below is from http://webservices.amazon.com/AWSECommerceService/AWSECommerceService.wsdl
 Parser = from_wsdl_file(StringIO("""<?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webservices.amazon.com/AWSECommerceService/2009-10-01" targetNamespace="http://webservices.amazon.com/AWSECommerceService/2009-10-01">
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webservices.amazon.com/AWSECommerceService/2009-11-01" targetNamespace="http://webservices.amazon.com/AWSECommerceService/2009-11-01">
     <types>
-		<xs:schema targetNamespace="http://webservices.amazon.com/AWSECommerceService/2009-10-01" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webservices.amazon.com/AWSECommerceService/2009-10-01" elementFormDefault="qualified">
+		<xs:schema targetNamespace="http://webservices.amazon.com/AWSECommerceService/2009-11-01" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webservices.amazon.com/AWSECommerceService/2009-11-01" elementFormDefault="qualified">
 	
 	        <xs:element name="Bin">
 	                <xs:complexType>
 	                        <xs:sequence>
-	                                <xs:element name="BinName" type="xs:string"/>
-	                                <xs:element name="BinItemCount" type="xs:positiveInteger"/>
+	                                <xs:element name="BinName" type="xs:string" />
+	                                <xs:element name="BinItemCount" type="xs:positiveInteger" />
 	                                <xs:element name="BinParameter" minOccurs="0" maxOccurs="unbounded">
 		                              <xs:complexType>
 	                                          <xs:sequence>
-	                                                 <xs:element name="Name" type="xs:string"/>
-	                                                 <xs:element name="Value" type="xs:string"/>
+	                                                 <xs:element name="Name" type="xs:string" />
+	                                                 <xs:element name="Value" type="xs:string" />
 	                                          </xs:sequence>
 	                                      </xs:complexType>
 	                                </xs:element>
@@ -28,15 +28,15 @@ Parser = from_wsdl_file(StringIO("""<?xml version="1.0" encoding="UTF-8"?>
 	        <xs:element name="SearchBinSet">
 	                <xs:complexType>
 	                        <xs:sequence>
-	                               <xs:element ref="tns:Bin" minOccurs="0" maxOccurs="unbounded"/>
+	                               <xs:element ref="tns:Bin" minOccurs="0" maxOccurs="unbounded" />
 	                        </xs:sequence>
-	                        <xs:attribute name="NarrowBy" type="xs:string" use="required"/>
+	                        <xs:attribute name="NarrowBy" type="xs:string" use="required" />
 	                </xs:complexType>
 	        </xs:element>
 		<xs:element name="SearchBinSets">
 	                <xs:complexType>
 	                        <xs:sequence>
-	                                <xs:element ref="tns:SearchBinSet" minOccurs="0" maxOccurs="unbounded"/>
+	                                <xs:element ref="tns:SearchBinSet" minOccurs="0" maxOccurs="unbounded" />
 	                        </xs:sequence>
 	                </xs:complexType>
 	        </xs:element>
@@ -1148,7 +1148,7 @@ Parser = from_wsdl_file(StringIO("""<?xml version="1.0" encoding="UTF-8"?>
 					<xs:element name="TotalPages" type="xs:nonNegativeInteger" minOccurs="0"/>
 					<xs:element ref="tns:SearchResultsMap" minOccurs="0"/>
 					<xs:element ref="tns:Item" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="tns:SearchBinSets" minOccurs="0"/>
+					<xs:element ref="tns:SearchBinSets" minOccurs="0" />
 				</xs:sequence>
 			</xs:complexType>
 		</xs:element>
@@ -1379,7 +1379,7 @@ Parser = from_wsdl_file(StringIO("""<?xml version="1.0" encoding="UTF-8"?>
 								<xs:element name="Results" type="xs:nonNegativeInteger" minOccurs="0"/>
 								<xs:element name="Pages" type="xs:nonNegativeInteger" minOccurs="0"/>
 								<xs:element ref="tns:CorrectedQuery" minOccurs="0"/>
-								<xs:element name="RelevanceRank" type="xs:positiveInteger"/>
+								<xs:element name="RelevanceRank" type="xs:positiveInteger" minOccurs="0"/>
 								<xs:element name="ASIN" type="xs:string" maxOccurs="unbounded"/>
 							</xs:sequence>
 						</xs:complexType>
@@ -1409,6 +1409,13 @@ Parser = from_wsdl_file(StringIO("""<?xml version="1.0" encoding="UTF-8"?>
 					</xs:element>
 					<xs:element ref="tns:ItemAttributes" minOccurs="0"/>
 					<xs:element ref="tns:MerchantItemAttributes" minOccurs="0"/>
+					<xs:element name="VariationAttributes" minOccurs="0" maxOccurs="1">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element ref="tns:VariationAttribute" minOccurs="0" maxOccurs="unbounded"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
 					<xs:element ref="tns:RelatedItems" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element ref="tns:Collections" minOccurs="0"/>
 					<xs:element name="Subjects" minOccurs="0" maxOccurs="1">
@@ -1705,6 +1712,14 @@ Parser = from_wsdl_file(StringIO("""<?xml version="1.0" encoding="UTF-8"?>
 	                           </xs:sequence>
 	                </xs:complexType>
 		</xs:element>
+	        <xs:element name="VariationAttribute">
+	                <xs:complexType>
+	                        <xs:sequence>
+	                                <xs:element name="Name" type="xs:string"/>
+	                                <xs:element name="Value" type="xs:string" maxOccurs="unbounded"/>
+	                        </xs:sequence>
+	                </xs:complexType>
+	        </xs:element>
 		<xs:element name="VariationSummary">
 			<xs:complexType>
 				<xs:sequence>
@@ -2272,8 +2287,8 @@ Parser = from_wsdl_file(StringIO("""<?xml version="1.0" encoding="UTF-8"?>
 					<xs:element name="IsPrevious" type="xs:boolean" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element ref="tns:Part" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element ref="tns:MissingVehicleAttributes" minOccurs="0" maxOccurs="1"/>
-					<xs:element ref="tns:PartBrowseNodeBins" minOccurs="0"/>
-					<xs:element ref="tns:PartBrandBins" minOccurs="0"/>
+					<xs:element ref="tns:PartBrowseNodeBins" minOccurs="0" />
+					<xs:element ref="tns:PartBrandBins" minOccurs="0" />
 				</xs:sequence>
 			</xs:complexType>
 		</xs:element>
@@ -2287,14 +2302,14 @@ Parser = from_wsdl_file(StringIO("""<?xml version="1.0" encoding="UTF-8"?>
 		<xs:element name="PartBrowseNodeBins">
 			<xs:complexType>
 				<xs:sequence>
-					<xs:element ref="tns:Bin" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tns:Bin" minOccurs="0" maxOccurs="unbounded" />
 				</xs:sequence>
 			</xs:complexType>
 		</xs:element>
 		<xs:element name="PartBrandBins">
 			<xs:complexType>
 				<xs:sequence>
-					<xs:element ref="tns:Bin" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tns:Bin" minOccurs="0" maxOccurs="unbounded" />
 				</xs:sequence>
 			</xs:complexType>
 		</xs:element>
@@ -2302,16 +2317,16 @@ Parser = from_wsdl_file(StringIO("""<?xml version="1.0" encoding="UTF-8"?>
 			<xs:complexType>
 				<xs:sequence>
 					<xs:element ref="tns:Item" minOccurs="0" maxOccurs="1"/>
-					<xs:element name="HasPartCompatibility" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
-					<xs:element ref="tns:VehiclePartFit" minOccurs="0" maxOccurs="1"/>
-					<xs:element ref="tns:Fitments" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="HasPartCompatibility" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+					<xs:element ref="tns:VehiclePartFit" minOccurs="0" maxOccurs="1" />
+					<xs:element ref="tns:Fitments" minOccurs="0" maxOccurs="1" />
 				</xs:sequence>
 			</xs:complexType>
 		</xs:element>
 		<xs:element name="VehiclePartFit">
 			<xs:complexType>
 				<xs:sequence>
-					<xs:element name="IsFit" type="xs:string" maxOccurs="1"/>
+					<xs:element name="IsFit" type="xs:string" maxOccurs="1" />
 					<xs:element ref="tns:MissingVehicleAttributes" minOccurs="0" maxOccurs="1"/>
 				</xs:sequence>
 			</xs:complexType>
@@ -2319,17 +2334,17 @@ Parser = from_wsdl_file(StringIO("""<?xml version="1.0" encoding="UTF-8"?>
 		<xs:element name="Fitments">
 			<xs:complexType>
 				<xs:sequence>
-					<xs:element name="TotalFitments" type="xs:nonNegativeInteger"/>
-					<xs:element name="TotalPages" type="xs:nonNegativeInteger"/>
-					<xs:element name="FitmentAttributes" type="xs:string" minOccurs="0"/>
-					<xs:element ref="tns:Fitment" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="TotalFitments" type="xs:nonNegativeInteger" />
+					<xs:element name="TotalPages" type="xs:nonNegativeInteger" />
+					<xs:element name="FitmentAttributes" type="xs:string" minOccurs="0" />
+					<xs:element ref="tns:Fitment" minOccurs="0" maxOccurs="unbounded" />
 				</xs:sequence>
 			</xs:complexType>
 		</xs:element>
 		<xs:element name="FitmentAttributes">
 			<xs:complexType>
 				<xs:sequence>
-					<xs:element name="FitmentAttribute" type="xs:string" maxOccurs="unbounded"/>
+					<xs:element name="FitmentAttribute" type="xs:string" maxOccurs="unbounded" />
 				</xs:sequence>
 			</xs:complexType>
 		</xs:element>
@@ -3883,4 +3898,4 @@ Parser = from_wsdl_file(StringIO("""<?xml version="1.0" encoding="UTF-8"?>
     </service>
 </definitions>
 """))
-Parser.version = '2009-10-01'
+Parser.version = '2009-11-01'
