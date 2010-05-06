@@ -3,3 +3,7 @@
 *.swo
 build
 dist
+dist
+EGG-INFO
+*.egg-info
+setup.cfg
