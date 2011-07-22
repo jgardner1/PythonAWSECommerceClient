@@ -1,0 +1,6 @@
+This is an AWSECommerceClient written in Python.
+
+It reads in the wsdl file and parses it with XMLSchemaParser. The client using
+the generated service should know in advance what parameters are expected and
+what the return values are. If the WSDL changes, then the interface will be
+different.
